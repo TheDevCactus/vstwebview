@@ -1,0 +1,2 @@
+/usr/bin/ar qc lib/Debug/libvstwebview.a CMakeFiles/vstwebview.dir/src/vstwebview/gtk/webview_gtk.cc.o CMakeFiles/vstwebview.dir/src/vstwebview/webview_controller_bindings.cc.o CMakeFiles/vstwebview.dir/src/vstwebview/webview_message_listener.cc.o CMakeFiles/vstwebview.dir/src/vstwebview/webview_pluginview.cc.o CMakeFiles/vstwebview.dir/src/vstwebview/webview.cc.o
+/usr/bin/ranlib lib/Debug/libvstwebview.a

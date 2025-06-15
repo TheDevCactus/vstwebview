@@ -38,6 +38,7 @@
 #include "../include/plugids.h"
 
 #include "base/source/fstreamer.h"
+#include "base/source/fstring.h"
 #include "pluginterfaces/base/ibstream.h"
 #include "pluginterfaces/base/ustring.h"
 
