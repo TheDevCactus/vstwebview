@@ -3,6 +3,11 @@ cmake_minimum_required(VERSION 3.21.0)
 set(CMAKE_CXX_STANDARD 20)
 set(ABSL_PROPAGATE_CXX_STD ON)
 
+# Add compiler flag to ignore unused variable warnings in VST3 SDK
+if(APPLE)
+    add_compile_options(-Wno-error=unused-but-set-variable)
+endif()
+
 project(vstwebview)
 
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake")
@@ -24,7 +29,7 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(vst3sdk)
 
 # json
-FetchContent_Declare(json URL https://github.com/nlohmann/json/releases/download/v3.10.5/json.tar.xz)
+FetchContent_Declare(json URL https://github.com/nlohmann/json/releases/download/v3.11.3/json.tar.xz)
 FetchContent_MakeAvailable(json)
 
 smtg_enable_vst3_sdk()
