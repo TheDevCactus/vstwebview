@@ -52,5 +52,3 @@
 #define stringCompanyWeb "https://www.sofozo.com"
 #define stringCompanyEmail "mailto:info@sofozo.com"
 #define stringCompanyName "Black Cat Studio"
-// #define stringLegalCopyright "© 2025 Black Cat Studio"
-// #define stringLegalTrademarks "SOFOZO is a trademark of Black Cat Studio"
