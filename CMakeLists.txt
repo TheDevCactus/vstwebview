@@ -15,12 +15,9 @@ list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake")
 # Third party packages are pulled in via FetchContent
 include(FetchContent)
 
-# We don't want VSTGUI to bloat the binary.
-set(SMTG_ADD_VSTGUI OFF)
-set(SMTG_ENABLE_VST3_PLUGIN_EXAMPLES OFF)
-set(SMTG_ENABLE_VST3_HOSTING_EXAMPLES OFF)
-
-# VST3SDK
+# ================================
+# VST3 SDK
+# ================================
 FetchContent_Declare(
         vst3sdk
         GIT_REPOSITORY https://github.com/steinbergmedia/vst3sdk.git
@@ -28,11 +25,18 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(vst3sdk)
 
+set(SMTG_ADD_VSTGUI OFF)
+set(SMTG_ENABLE_VST3_PLUGIN_EXAMPLES OFF)
+set(SMTG_ENABLE_VST3_HOSTING_EXAMPLES OFF)
+
+smtg_enable_vst3_sdk()
+
+# ================================
 # json
+# ================================
 FetchContent_Declare(json URL https://github.com/nlohmann/json/releases/download/v3.11.3/json.tar.xz)
 FetchContent_MakeAvailable(json)
 
-smtg_enable_vst3_sdk()
 
 # Platform specific sources and compile options.
 IF (WIN32)
@@ -73,6 +77,7 @@ add_dependencies(vstwebview nlohmann_json::nlohmann_json)
 
 # Needed for webview2.h & friends on Win32.
 if (WIN32)
+
     option(WIL_BUILD_PACKAGING "" OFF)
     option(WIL_BUILD_TESTS "" OFF)
     FetchContent_Declare(wil GIT_REPOSITORY "https://github.com/microsoft/wil")
@@ -93,6 +98,7 @@ if (WIN32)
     endif ()
 
     target_link_libraries(vstwebview PRIVATE WIL::WIL Dwmapi Shlwapi)
+
 elseif(UNIX)
 
     # GTK on Linux
